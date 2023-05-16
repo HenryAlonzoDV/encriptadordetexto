@@ -21,7 +21,7 @@ function encriptar() {
         });
     }
 
-    if (mensajeEncriptado != ""){
+    else if (mensajeEncriptado != ""){
         document.querySelector("#p-resultado").style.display = "none";
         document.querySelector("#contenedor-copiar").style.display = "inherit";
         document.querySelector("#contenedor-copiar").style.display = "show";
