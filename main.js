@@ -26,17 +26,17 @@ function encriptar() {
         });
     }
 
-    if (mensaje !=" "){
+    if (mensajeEncriptado != ""){
+        document.querySelector("#resultado").innerHTML = mensajeEncriptado
+        document.querySelector("#mensaje").value = "";
+    }
+
+    else{
         swal({
             title: "Sin Texto",
             text: "Por favor ingresa un texto valido",
             icon: "error"
         });
-    }
-
-    else{
-        document.querySelector("#resultado").innerHTML = mensajeEncriptado
-        document.querySelector("#mensaje").value = "";
     }
 
     inputResultado.value = mensajeEncriptado;
@@ -51,10 +51,17 @@ function desencriptar() {
     .replaceAll("ai", "a")
     .replaceAll("ufat", "u");
     
-
-    document.querySelector("#resultado").innerHTML = mensaje
-    document.querySelector("#mensaje").value = "";
-
+    if (mensajeEncriptado != ""){
+        document.querySelector("#resultado").innerHTML = mensaje
+        document.querySelector("#mensaje").value = "";
+    }
+    else{
+        swal({
+            title: "Sin Texto",
+            text: "Por favor ingresa un texto valido",
+            icon: "error"
+        });
+    }
     inputResultado.value = mensaje;
 }
 
