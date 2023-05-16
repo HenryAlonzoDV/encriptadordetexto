@@ -3,7 +3,7 @@ const inputMensaje = document.querySelector("#mensaje")
 const inputResultado = document.querySelector("#resultado")
 
 function encriptar() {
-    var mensaje = inputMensaje.value.toLowerCase();
+    var mensaje = inputMensaje.value;
     var mensajeEncriptado = mensaje
     .replaceAll("e", "enter")
     .replaceAll("i", "ines")
@@ -13,9 +13,31 @@ function encriptar() {
     
     document.querySelector("#p-resultado").style.display = "none";
     document.querySelector("#contenedor-copiar").style.display = "inherit";
-    document.querySelector("#resultado").innerHTML = mensajeEncriptado
     document.querySelector("#contenedor-copiar").style.display = "show";
-    document.querySelector("#mensaje").value = "";
+    
+
+    const caracteresNoValidos = /[A-ZÁÉÍÓÚÜÑáéíóúüñ0123456789\^$.°"%&#*+=:@>´¨`^;:|\\/()\[\]{}]/;
+
+    if (caracteresNoValidos.test(mensaje)){
+        swal({
+            title: "Texto No Valido",
+            text: "Por favor intentalo solo con minusculas y sin acentos",
+            icon: "error"
+        });
+    }
+
+    if (mensaje !=" "){
+        swal({
+            title: "Sin Texto",
+            text: "Por favor ingresa un texto valido",
+            icon: "error"
+        });
+    }
+
+    else{
+        document.querySelector("#resultado").innerHTML = mensajeEncriptado
+        document.querySelector("#mensaje").value = "";
+    }
 
     inputResultado.value = mensajeEncriptado;
 }
@@ -28,6 +50,7 @@ function desencriptar() {
     .replaceAll("ober", "o")
     .replaceAll("ai", "a")
     .replaceAll("ufat", "u");
+    
 
     document.querySelector("#resultado").innerHTML = mensaje
     document.querySelector("#mensaje").value = "";
@@ -38,7 +61,10 @@ function desencriptar() {
 function copiar() {
     var mensajeEncriptado = inputResultado.value;
     navigator.clipboard.writeText(mensajeEncriptado);
-    swal("Texto Copiado", " ", "success")
+    swal({
+        title: "Texto Copiado",
+        icon: "success"
+    });
 }
 
 const botonEncriptador = document.querySelector("#encriptador")
