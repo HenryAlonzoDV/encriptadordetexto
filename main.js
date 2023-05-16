@@ -11,11 +11,6 @@ function encriptar() {
     .replaceAll("a", "ai")
     .replaceAll("u", "ufat");
     
-    document.querySelector("#p-resultado").style.display = "none";
-    document.querySelector("#contenedor-copiar").style.display = "inherit";
-    document.querySelector("#contenedor-copiar").style.display = "show";
-    
-
     const caracteresNoValidos = /[A-ZÁÉÍÓÚÜÑáéíóúüñ0123456789\^$.°"%&#*+=:@>´¨`^;:|\\/()\[\]{}]/;
 
     if (caracteresNoValidos.test(mensaje)){
@@ -27,6 +22,9 @@ function encriptar() {
     }
 
     if (mensajeEncriptado != ""){
+        document.querySelector("#p-resultado").style.display = "none";
+        document.querySelector("#contenedor-copiar").style.display = "inherit";
+        document.querySelector("#contenedor-copiar").style.display = "show";
         document.querySelector("#resultado").innerHTML = mensajeEncriptado
         document.querySelector("#mensaje").value = "";
     }
