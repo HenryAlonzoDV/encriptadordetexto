@@ -38,7 +38,7 @@ function desencriptar() {
 function copiar() {
     var mensajeEncriptado = inputResultado.value;
     navigator.clipboard.writeText(mensajeEncriptado);
-    alert("Texto copido")
+    swal("Texto Copiado", " ", "success")
 }
 
 const botonEncriptador = document.querySelector("#encriptador")
